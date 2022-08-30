@@ -1,0 +1,82 @@
+.header {
+  padding-top: 40px;
+  height: 216px;
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  @media screen and (min-width: 320px) {
+    height: 230px;
+    background-image: url(/src/images/header/abstract-background-with-red-lines_320.png);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768;
+    background-image: url(/src/images/header/abstract-background-with-red-lines_768.png);
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    background-image: url(/src/images/header/abstract-background-with-red-lines_1280.png);
+  }
+}
+
+.menu {
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu_list {
+  display: flex;
+}
+.menu_item {
+  margin-left: 40px;
+}
+.menu_link {
+  font-size: 12px;
+  line-height: calc(12 / 14);
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.logo_title {
+  font-size: 30px;
+  line-height: calc(30 / 35);
+  margin-left: 8px;
+  color: #ffffff;
+  align-items: center;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.search_leable {
+  display: flex;
+  justify-content: center;
+}
+.search_input {
+  border: 0;
+  border-bottom: 0.5px solid #ffffff;
+  opacity: 0.9;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ffffff;
+  outline: 0;
+
+  width: 280px;
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 394px;
+  }
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: calc(16 / 14);
+
+    color: #ffffff;
+  }
+}

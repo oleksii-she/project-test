@@ -4,6 +4,7 @@
   background-repeat: no-repeat, repeat;
   background-size: cover;
   @media screen and (min-width: 320px) {
+    width: 320px;
     height: 230px;
     background-image: url(/src/images/header/abstract-background-with-red-lines_320.png);
   }
@@ -20,7 +21,6 @@
 }
 
 .menu {
-  padding-top: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,6 +40,10 @@
   color: #ffffff;
 }
 
+.logo_box {
+  display: flex;
+  align-items: center;
+}
 .logo_title {
   font-size: 30px;
   line-height: calc(30 / 35);

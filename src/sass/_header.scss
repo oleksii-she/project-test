@@ -9,12 +9,12 @@
     background-image: url(/src/images/header/abstract-background-with-red-lines_320.png);
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 1199px) {
     width: 768;
     background-image: url(/src/images/header/abstract-background-with-red-lines_768.png);
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1200px) {
     width: 1280px;
     background-image: url(/src/images/header/abstract-background-with-red-lines_1280.png);
   }

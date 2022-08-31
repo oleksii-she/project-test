@@ -1,0 +1,48 @@
+.my-library_list {
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    margin-top: 60px;
+  }
+}
+.my-library_item {
+  margin-left: 20px;
+  @media screen and (max-width: 1199px) {
+    & + & {
+      margin-left: 32px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    & + & {
+      margin-left: 16px;
+    }
+  }
+}
+
+.my-library_btn {
+  color: #ffffff;
+
+  opacity: 0.9;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
+  font-size: 12px;
+  line-height: calc(12 / 16);
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    border-radius: 5px;
+    padding: 14px 36px 14px 36px;
+  }
+  @media screen and (min-width: 481px) and(max-width: 1199px) {
+    width: 152px;
+    height: 44px;
+    padding: 13px 57px 13px 57px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 13px 41px 13px 41px;
+  }
+
+  &:hover,
+  :focus {
+    background-color: #ff6b01;
+  }
+}

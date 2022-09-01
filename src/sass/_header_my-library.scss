@@ -1,4 +1,5 @@
 .my-library_list {
+  padding: 0;
   display: flex;
   justify-content: center;
   @media screen and (min-width: 320px) and (max-width: 480px) {
@@ -6,7 +7,9 @@
   }
 }
 .my-library_item {
-  margin-left: 20px;
+  & + & {
+    margin-left: 20px;
+  }
   @media screen and (max-width: 1199px) {
     & + & {
       margin-left: 32px;
@@ -33,9 +36,7 @@
     padding: 14px 36px 14px 36px;
   }
   @media screen and (min-width: 481px) and(max-width: 1199px) {
-    width: 152px;
-    height: 44px;
-    padding: 13px 57px 13px 57px;
+    padding: 13px 46px 13px 46px;
   }
   @media screen and (min-width: 1200px) {
     padding: 13px 41px 13px 41px;

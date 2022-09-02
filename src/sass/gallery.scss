@@ -54,3 +54,23 @@
     height: 574px;
   }
 }
+
+// page
+
+.btns-pages {
+  display: flex;
+  align-items: center;
+}
+
+.btns-pages > * {
+  cursor: pointer;
+}
+
+.num-page {
+  padding: 10px;
+}
+
+.num-page.num-active {
+  border: 1px solid #e3c596;
+  color: #e3c596;
+}

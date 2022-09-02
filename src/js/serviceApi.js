@@ -12,7 +12,7 @@ class NewServiceApi {
       const key = 'bef2e1469ade062164db331fc6ab2f25';
       const url = 'https://api.themoviedb.org';
       return await fetch(
-        `${url}/3/trending/all/week?api_key=${key}&media_type=all&time_window=week`
+        `${url}/3/trending/all/week?api_key=${key}&media_type=all&time_window=week&page=${this.page}`
       ).then(res => res.json());
     } catch {
       console.error();
@@ -23,15 +23,20 @@ class NewServiceApi {
     this.page = 1;
   }
   incrementPage() {
-    this.page += 1;
+    return (this.page += 1);
   }
-
+  decrementPage() {
+    return (this.page -= 1);
+  }
   get query() {
     return this.searchValue;
   }
 
   set query(nuwQuery) {
     this.searchValue = nuwQuery;
+  }
+  set pageNum(nuwPage) {
+    this.page = nuwPage;
   }
 }
 

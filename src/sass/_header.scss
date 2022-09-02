@@ -70,7 +70,7 @@
   border: 0;
   border-bottom: 0.5px solid #ffffff;
   opacity: 0.9;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   color: #ffffff;
   outline: 0;
   margin-bottom: 20px;
@@ -101,11 +101,9 @@
 
 .search_brn {
   position: absolute;
-  right: 0%;
+  right: -1.7%;
+  bottom: 23px;
   cursor: pointer;
-
   background-color: transparent;
   border: none;
-  @media screen and (min-width: 320px) and (max-width: 480px) {
-  }
 }

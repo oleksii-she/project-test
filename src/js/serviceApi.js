@@ -1,19 +1,19 @@
-const key = 'bef2e1469ade062164db331fc6ab2f25';
-const url = 'https://api.themoviedb.org/3/movie/76341';
+export { NewServiceApi };
+const axios = require('axios').default;
 
-class serviceApi {
+class NewServiceApi {
   constructor() {
     this.searchValue = '';
     this.page = 1;
   }
 
-  async serviceApi() {
+  async serviceMovieTopApi() {
     try {
-      const url = 'https://api.themoviedb.org';
       const key = 'bef2e1469ade062164db331fc6ab2f25';
-      return await await fetch(
+      const url = 'https://api.themoviedb.org';
+      return await fetch(
         `${url}/3/trending/all/week?api_key=${key}&media_type=all&time_window=week`
-      ).json();
+      ).then(res => res.json());
     } catch {
       console.error();
     }
@@ -35,18 +35,22 @@ class serviceApi {
   }
 }
 
-// async serviceApi() {
+// // апі
+// const key = 'bef2e1469ade062164db331fc6ab2f25';
+// const url = 'https://api.themoviedb.org';
 
+// async function serviceApi() {
 //   try {
-//         const key = 'bef2e1469ade062164db331fc6ab2f25';
-//     const url = 'https://api.themoviedb.org';
 //     return await (
 //       await fetch(
 //         `${url}/3/trending/all/week?api_key=${key}&media_type=all&time_window=week`
 //       )
 //     )
-
+//       .json()
+//       .then(data => console.log(data));
 //   } catch {
 //     console.error();
 //   }
 // }
+// //   = = = = == = == = = = = = = = = = == = =   ========= == = = = = == = = = = = = = == = = = = =  = = = = == =
+// serviceApi();

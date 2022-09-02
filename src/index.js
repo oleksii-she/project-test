@@ -1,24 +1,7 @@
 const gallery = document.querySelector('.gallery_list');
 
-// апі
-const key = 'bef2e1469ade062164db331fc6ab2f25';
-const url = 'https://api.themoviedb.org';
-
-async function serviceApi() {
-  try {
-    return await (
-      await fetch(
-        `${url}/3/trending/all/week?api_key=${key}&media_type=all&time_window=week`
-      )
-    )
-      .json()
-      .then(data => markupGallery(data.results));
-  } catch {
-    console.error();
-  }
-}
-//   = = = = == = == = = = = = = = = = == = =   ========= == = = = = == = = = = = = = == = = = = =  = = = = == =
-
+const searchInput = document.querySelectorAll('.search_input');
+console.log(searchInput);
 async function markupGallery(data) {
   console.log(data);
   const markup = await data

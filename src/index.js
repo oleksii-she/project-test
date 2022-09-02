@@ -27,8 +27,8 @@ async function markupGallery(data) {
       if (title === undefined) {
         title = el.original_name;
         return `   <li class="gallery_item"><a href="">
-        <img class="gallery_img" src="https://image.tmdb.org/t/p/w500${el.poster_path}" alt="${title}"/>
-          <div><h2 class="gallery_title">${title}<span>ganre</span></h2></div>
+        <img class="gallery_img" src="https://image.tmdb.org/t/p/w500${el.poster_path}" alt="${el.title}"/></a>
+          <div><h2 class="gallery_title">${el.title}<span>ganre</span></h2></div>
       </li>`;
       }
       return `   <li class="gallery_item"><a href="">

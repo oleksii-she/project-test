@@ -69,6 +69,7 @@ async function openModal(id) {
     </div>
   `;
   modal.classList.remove('is-hiden');
+  document.body.classList.add('scrollOFF');
 
   const btnModalClose = document.querySelector('.btn_close');
   btnModalClose.addEventListener('click', closeModal);
@@ -76,6 +77,7 @@ async function openModal(id) {
 
 function closeModal() {
   modal.classList.add('is-hiden');
+  document.body.classList.remove('scrollOFF');
 }
 
 window.addEventListener('click', e => {

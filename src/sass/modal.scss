@@ -68,7 +68,9 @@
 .text-content_box {
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
+  @media screen and (min-width: 1200px) {
+    margin-left: 16px;
+  }
 }
 .modal_title {
   margin-bottom: 20px;
@@ -144,6 +146,13 @@
 }
 .modal-box_btn {
   margin-left: 24px;
+  display: flex;
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    margin: 0;
+  }
+  @media screen and (min-width: 481px) and (max-width: 1199px) {
+    margin-left: 15px;
+  }
 }
 .watched_btn {
   padding: 12px 8px 12px 8px;
@@ -152,6 +161,13 @@
   font-size: 12px;
   line-height: calc(16 / 12);
   width: 136px;
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    width: 110px;
+    padding: 6px 27px;
+  }
+  @media screen and (min-width: 481px) and (max-width: 1199px) {
+    width: 125px;
+  }
   text-transform: uppercase;
   &:hover {
     background-color: #ff6b01;
@@ -169,6 +185,10 @@
   &:hover {
     background-color: #ff6b01;
     color: #fff;
+  }
+  @media screen and (min-width: 320px) and (max-width: 480px) {
+    width: 110px;
+    padding: 13px 13px;
   }
   margin-left: 15px;
 }

@@ -92,22 +92,24 @@
   display: flex;
   margin-bottom: 20px;
   width: auto;
+  justify-content: space-between;
 }
-.category_list {
+.category_list,
+.categiryApi_list {
   padding: 0;
-  margin-right: 39px;
+  margin: 0;
 
   @media screen and (min-width: 1200px) {
     margin-right: 81px;
   }
 }
 .category_item {
-  margin-bottom: 8px;
+  & + & {
+    margin-bottom: 8px;
+  }
   font-size: 12px;
   line-height: calc(16 / 12);
-  &:last-child {
-    margin-bottom: 0;
-  }
+
   color: #8c8c8c;
 }
 .slash {
@@ -126,7 +128,9 @@
   color: #000000;
 }
 .categiryApi_item {
-  margin-bottom: 8px;
+  & + & {
+    margin-bottom: 8px;
+  }
 
   font-size: 12px;
   line-height: calc(14 / 12);

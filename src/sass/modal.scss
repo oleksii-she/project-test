@@ -17,7 +17,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
-
+  max-height: 100%;
   overflow: auto;
   background-color: #fff;
   transform: translate(-50%, -50%), scale(1);
@@ -26,12 +26,12 @@
   background-color: #fff;
   @media screen and (min-width: 320px) and (max-width: 480px) {
     width: 280px;
-    height: 940px;
+
     padding: 48px 20px;
   }
   @media screen and (min-width: 481px) and (max-width: 1199px) {
     width: 704px;
-    height: 552px;
+
     padding-right: 72px;
     padding-left: 36px;
     padding-top: 40px;
@@ -40,7 +40,7 @@
 
   @media screen and (min-width: 1200px) {
     width: 806px;
-    height: 558px;
+
     padding: 40px 12px;
   }
 }
@@ -66,8 +66,9 @@
   display: contents;
 }
 .text-content_box {
-  display: flex;
-  flex-direction: column;
+  @media screen and (min-width: 481px) and (max-width: 1199px) {
+    margin-left: 68px;
+  }
   @media screen and (min-width: 1200px) {
     margin-left: 16px;
   }
@@ -159,18 +160,21 @@
   }
 }
 .watched_btn {
-  padding: 12px 8px 12px 8px;
   border-radius: 5px;
   background-color: #fff;
   font-size: 12px;
   line-height: calc(16 / 12);
-  width: 136px;
+
   @media screen and (min-width: 320px) and (max-width: 480px) {
     width: 110px;
     padding: 6px 27px;
   }
   @media screen and (min-width: 481px) and (max-width: 1199px) {
     width: 125px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 136px;
+    padding: 10px 8px 10px 8px;
   }
   text-transform: uppercase;
   &:hover {

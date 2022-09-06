@@ -78,6 +78,17 @@ function closeModal() {
   modal.classList.add('is-hiden');
 }
 
+window.addEventListener('click', e => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+window.addEventListener('keydown', e => {
+  if (e.code === 'Escape') {
+    closeModal();
+  }
+});
+
 export { markupGallery, openModal };
 
 // const markup = data

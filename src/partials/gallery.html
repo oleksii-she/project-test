@@ -1,15 +1,60 @@
 <section class="filmoteka">
   <div class="conteiner">
     <ul class="gallery_list"></ul>
-
-    <div class="btns-pages">
-      <button class="btn-left" type="submit"><-</button>
-      <div class="num-page num-active">1</div>
-      <div class="num-page">2</div>
-      <div class="num-page">3</div>
-      <div class="num-page">4</div>
-      <div class="num-page">5</div>
-      <button class="btn-right" type="submit">-></button>
+    <div class="backdrop is-hiden">
+      <div class="modal">
+        <button class="btn_close" type="button">
+          <img src="/src/images/close.svg" alt="" />
+        </button>
+        <div class="modal_box">
+          <div class="img_box">
+            <img src="/src/images/test_modal.png" alt="" class="modal_img" />
+          </div>
+          <div class="text-content_box">
+            <h2 class="modal_title">A FISTFUL OF LEAD</h2>
+            <div class="category_box">
+              <ul class="category_list">
+                <li class="category_item">Vote / Votes</li>
+                <li class="category_item">Popularity</li>
+                <li class="category_item">Original Title</li>
+                <li class="category_item">Genre</li>
+              </ul>
+              <ul class="categiryApi_list">
+                <li class="categiryApi_iem">
+                  <span class="vote">7.3</span><span class="slash">/</span> 1260
+                </li>
+                <li class="categiryApi_item">100.2</li>
+                <li class="categiryApi_item">A FISTFUL OF LEAD</li>
+                <li class="categiryApi_item">Western</li>
+              </ul>
+            </div>
+            <h2 class="about_title">About</h2>
+            <p class="about_text">
+              Four of the West’s most infamous outlaws assemble to steal a huge
+              stash of gold from the most corrupt settlement of the gold rush
+              towns. But not all goes to plan one is killed and the other three
+              escapes with bags of gold hide out in the abandoned gold mine
+              where they happen across another gang of three – who themselves
+              were planning to hit the very same bank! As tensions rise, things
+              go from bad to worse as they realise the bags of gold are filled
+              with lead... they’ve been double crossed – but by who and how?
+            </p>
+            <div class="modal-box_btn">
+              <button class="watched_btn">add to Watched</button>
+              <button class="queue_btn">add to queue</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- <div class="btns-pages">
+  <button  class="btn-left" type="submit"><-</button>
+  <div class="num-page num-active">1</div>
+  <div class="num-page">2</div>
+  <div class="num-page">3</div>
+  <div class="num-page">4</div>
+  <div class="num-page">5</div>
+  <button  class="btn-right" type="submit">-></button>
+</div> -->
 </section>

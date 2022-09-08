@@ -8,7 +8,7 @@ const serviceApi = new NewServiceApi();
 const pageList = document.querySelector('.page_list');
 const resultInput = document.querySelector('.result_input');
 
-function onSearch(e) {
+async function onSearch(e) {
   e.preventDefault();
 
   try {
@@ -19,24 +19,30 @@ function onSearch(e) {
     }
 
     serviceApi.query = search;
-    serviceApi.serviceSearchMovie().then(data => {
-      if (data.results.length === 0) {
-        resultInput.textContent =
-          'Search result not successful. Enter the correct movie name and';
-      }
-      markupGallery(data.results);
-    });
-  } catch (error) {
-    console.log(error);
-  }
+
+    const data = await serviceApi.serviceSearchMovie();
+    console.log(data);
+    if (data.results.length === 0) {
+      resultInput.textContent =
+        'Search result not successful. Enter the correct movie name and';
+    }
+    markupGallery(data.results);
+  } catch (error) {}
 }
 
 // top movie
-function topMoviePage() {
-  serviceApi.serviceMovieTopApi().then(data => markupGallery(data.results));
+async function topMoviePage() {
+  const data = await serviceApi.serviceMovieTopApi();
+  markupGallery(data.results);
 }
 topMoviePage();
 
+async function idMovie() {
+  const s = await serviceApi.serviceIdMovie();
+
+  openModal(s);
+}
+idMovie();
 searchForm.addEventListener('submit', onSearch);
 
 // modal

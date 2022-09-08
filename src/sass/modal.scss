@@ -7,6 +7,9 @@
   background-color: rgba(0, 0, 0, 0.25);
   opacity: 1;
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
 }
 .is-hiden {
   display: none;

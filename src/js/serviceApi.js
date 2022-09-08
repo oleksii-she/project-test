@@ -1,30 +1,52 @@
 export { NewServiceApi };
-const axios = require('axios').default;
 const key = 'bef2e1469ade062164db331fc6ab2f25';
 const url = 'https://api.themoviedb.org/3';
-class NewServiceApi {
+export default class NewServiceApi {
   constructor() {
     this.searchValue = '';
     this.page = 1;
+    this.id = NaN;
   }
 
+  // сервіс  топ популярних фільмів за тиждень
   async serviceMovieTopApi() {
     try {
-      return await fetch(
+      const resp = await fetch(
         `${url}/trending/movie/week?api_key=${key}&media_type=all&time_window=week&page=${this.page}`
-      ).then(res => res.json());
-    } catch {
-      console.error();
+      );
+      const respData = await resp.json();
+
+      return respData;
+    } catch (error) {
+      console.error(error.message);
     }
   }
 
+  // сервіс пошук фільмів за значенням
   async serviceSearchMovie() {
     try {
-      return await fetch(
-        `${url}/search/movie?api_key=${key}&query="${this.searchValue}"`
-      ).then(res => res.json());
-    } catch {
-      console.error();
+      const resp = await fetch(
+        `${url}/search/movie?api_key=${key}&query="${this.searchValue}`
+      );
+
+      const respData = await resp.json();
+
+      return respData;
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  // сервіс пошку фыльмыв по айді
+  async serviceIdMovie(id) {
+    try {
+      const resp = await fetch(`${url}/movie/${id},?api_key=${key}`);
+
+      const respData = await resp.json();
+
+      return respData;
+    } catch (error) {
+      console.error(error.message);
     }
   }
 
@@ -50,24 +72,8 @@ class NewServiceApi {
   set pageNumber(nuwPage) {
     this.page = nuwPage;
   }
+
+  set idNumber(nuwId) {
+    this.id = nuwId;
+  }
 }
-
-// // апі
-// const key = 'bef2e1469ade062164db331fc6ab2f25';
-// const url = 'https://api.themoviedb.org';
-
-// async function serviceApi() {
-//   try {
-//     return await (
-//       await fetch(
-//         `${url}/3/trending/all/week?api_key=${key}&media_type=all&time_window=week`
-//       )
-//     )
-//       .json()
-//       .then(data => console.log(data));
-//   } catch {
-//     console.error();
-//   }
-// }
-// //   = = = = == = == = = = = = = = = = == = =   ========= == = = = = == = = = = = = = == = = = = =  = = = = == =
-// serviceApi();

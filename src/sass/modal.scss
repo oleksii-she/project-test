@@ -108,13 +108,14 @@
   }
 }
 .category_item {
-  & + & {
-    margin-bottom: 8px;
-  }
+  margin-bottom: 8px;
   font-size: 12px;
   line-height: calc(16 / 12);
 
   color: #8c8c8c;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 .slash {
   font-size: 12px;
@@ -131,14 +132,13 @@
 .category_span {
   color: #000000;
 }
-.categiryApi_item {
-  & + & {
-    margin-bottom: 8px;
-  }
-
+.categoryApi_item {
+  margin-bottom: 8px;
   font-size: 12px;
   line-height: calc(14 / 12);
-
+  &:last-child {
+    margin-bottom: 0;
+  }
   color: #000000;
 }
 .about_title {

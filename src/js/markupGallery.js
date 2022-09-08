@@ -138,36 +138,28 @@ const modalBox = document.querySelector('.modal_box');
 async function openModal(id, poster) {
   serviceApi.idNumber === id;
   const respData = await serviceApi.serviceIdMovie(id);
-  // const resp = await fetch(
-  //   `https://api.themoviedb.org/3/movie/${id},?api_key=bef2e1469ade062164db331fc6ab2f25`
-  // );
-  // const respData = await resp.json();
-  let ganres = respData.genres.map(el => el.name);
-  let posters = `https://image.tmdb.org/t/p/w500${poster}`;
-  // if (posters === null) {
-  //   let poster = `https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=996&t=st=1662636904~exp=1662637504~hmac=6929048a20459487fdcf38b8077d000703b9a860b7d7ee1bb32f889a47b1edd8`;
-  // }
 
-  modalBox.innerHTML = `
+  let ganres = respData.genres.map(el => el.name);
+
+  if (poster === null) {
+    modalBox.innerHTML = `
     <div class="img_box">
-    <img src="${poster}" alt="" class="modal_img" />
+    <img src="https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=996&t=st=1662636904~exp=1662637504~hmac=6929048a20459487fdcf38b8077d000703b9a860b7d7ee1bb32f889a47b1edd8" alt="" class="modal_img" />
     </div>
     <div class="text-content_box">
       <h2 class="modal_title">${respData.original_title}</h2>
       <div class="category_box">
         <ul class="category_list">
-          <li class="category_item">Vote / Votes</li>
-          <li class="category_item">Popularity</li>
+          <li class="category_item">Vote / Votes <p> <span class="vote">${
+            respData.vote_average
+          }</span><span class="slash">/</span>${respData.vote_count}</p></li>
+          <li class="category_item">Popularity <p>${respData.popularity}<p></li>
           <li class="category_item">Original Title</li>
           <li class="category_item">Genre</li>
         </ul>
         <ul class="categiryApi_list">
-          <li class="categiryApi_item">
-            <span class="vote">${
-              respData.vote_average
-            }</span><span class="slash">/</span>${respData.vote_count}
-          </li>
-          <li class="categiryApi_item">${respData.popularity}</li>
+
+          <li class="categiryApi_item"></li>
           <li class="categiryApi_item categiryApi_style--upercase">${
             respData.original_title
           }</li>
@@ -186,6 +178,45 @@ async function openModal(id, poster) {
       </div>
     </div>
   `;
+  } else {
+    modalBox.innerHTML = `
+    <div class="img_box">
+    <img src="https://image.tmdb.org/t/p/w500${poster}" alt="" class="modal_img" />
+    </div>
+    <div class="text-content_box">
+      <h2 class="modal_title">${respData.original_title}</h2>
+      <div class="category_box">
+        <ul class="category_list">
+          <li class="category_item">Vote / Votes <p> <span class="vote">${
+            respData.vote_average
+          }</span><span class="slash">/</span>${respData.vote_count}</p></li>
+          <li class="category_item">Popularity <p>${respData.popularity}<p></li>
+          <li class="category_item">Original Title</li>
+          <li class="category_item">Genre</li>
+        </ul>
+        <ul class="categiryApi_list">
+
+          <li class="categiryApi_item"></li>
+          <li class="categiryApi_item categiryApi_style--upercase">${
+            respData.original_title
+          }</li>
+          <li class="categiryApi_item categiryApi_style ganre">${String(
+            ganres
+          ).replaceAll(',', ' / ')} </li>
+        </ul>
+      </div>
+      <h2 class="about_title">About</h2>
+      <p class="about_text">
+     ${respData.overview}
+      </p>
+      <div class="modal-box_btn">
+        <button class="watched_btn">add to Watched</button>
+        <button class="queue_btn">add to queue</button>
+      </div>
+    </div>
+  `;
+  }
+
   document.querySelector(
     '.backdrop'
   ).style.backgroundImage = `url(https://image.tmdb.org/t/p/original${respData.backdrop_path})`;

@@ -136,8 +136,8 @@ const modal = document.querySelector('.backdrop');
 const modalBox = document.querySelector('.modal_box');
 
 async function openModal(id, poster) {
-  serviceApi.idNumber === id;
-  const respData = await serviceApi.serviceIdMovie(id);
+  serviceApi.idNumber = 532639;
+  const respData = await serviceApi.serviceIdMovie();
 
   let ganres = respData.genres.map(el => el.name);
 

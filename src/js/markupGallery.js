@@ -86,24 +86,24 @@ export default function markupGallery(data) {
   document.querySelector('.gallery_list').innerHTML = '';
   data.forEach(el => {
     //порівняння айді з масивом всіх жанрів
-    ganresInfo.map(q => {
-      if (q.id === el.genre_ids[0]) {
-        el.genre_ids[0] = q.name;
-      }
+    // ganresInfo.map(q => {
+    //   if (q.id === el.genre_ids[0]) {
+    //     el.genre_ids[0] = q.name;
+    //   }
 
-      if (q.id === el.genre_ids[1]) {
-        el.genre_ids[1] = q.name;
-      }
-      if (q.id === el.genre_ids[2]) {
-        el.genre_ids[2] = q.name;
-      }
-      if (q.id === el.genre_ids[3]) {
-        el.genre_ids[3] = q.name;
-      }
-      if (q.id === el.genre_ids[4]) {
-        el.genre_ids[4] = q.name;
-      }
-    });
+    //   if (q.id === el.genre_ids[1]) {
+    //     el.genre_ids[1] = q.name;
+    //   }
+    //   if (q.id === el.genre_ids[2]) {
+    //     el.genre_ids[2] = q.name;
+    //   }
+    //   if (q.id === el.genre_ids[3]) {
+    //     el.genre_ids[3] = q.name;
+    //   }
+    //   if (q.id === el.genre_ids[4]) {
+    //     el.genre_ids[4] = q.name;
+    //   }
+    // });
 
     //лишає з дати тільки рік
     const realeaseData = el.release_date.slice(0, 4);
@@ -137,12 +137,13 @@ const modalBox = document.querySelector('.modal_box');
 
 async function openModal(id, poster) {
   serviceApi.idNumber = id;
+  console.log(id);
   const respData = await serviceApi.serviceIdMovie();
   const respDataVideo = await serviceApi.serviceVideoApi();
   console.log(respDataVideo.results);
 
   let ganres = respData.genres.map(el => el.name);
-
+  // 616037 629176 507086 682507 539681 852448
   if (poster === null) {
     modalBox.innerHTML = `
     <div class="img_box">

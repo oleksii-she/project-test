@@ -49,19 +49,30 @@ export default class NewServiceApi {
       console.error(error.message);
     }
   }
-  async serviceVideoApi() {
+  // async serviceVideoApi() {
+  //   try {
+  //     const resp = await fetch(
+  //       `https://api.themoviedb.org/3/movie/${this.id}/videos?api_key=bef2e1469ade062164db331fc6ab2f25`
+  //     );
+  //     const respData = await resp.json();
+
+  //     return respData;
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // }
+  async ganresApi() {
     try {
       const resp = await fetch(
-        `https://api.themoviedb.org/3/movie/${this.id}/videos?api_key=bef2e1469ade062164db331fc6ab2f25`
+        `https://api.themoviedb.org/3//genre/movie/list?api_key=bef2e1469ade062164db331fc6ab2f25`
       );
-      const respData = await resp.json();
-
-      return respData;
+      const respGanre = await resp.json();
+      console.log(respGanre);
+      return respGanre;
     } catch (error) {
       console.error(error.message);
     }
   }
-
   ressetPage() {
     this.page = 1;
   }
@@ -87,5 +98,19 @@ export default class NewServiceApi {
 
   set idNumber(nuwId) {
     this.id = nuwId;
+  }
+
+  insertGenresToMovieObj() {
+    return this.fetchPopularArticles().then(data => {
+      return this.fetchGenres().then(genresList => {
+        return data.map(movie => ({
+          ...movie,
+          release_date: movie.release_date.split('-')[0],
+          genres: movie.genre_ids
+            .map(id => genresList.filter(el => el.id === id))
+            .flat(),
+        }));
+      });
+    });
   }
 }

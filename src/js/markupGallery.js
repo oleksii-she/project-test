@@ -107,7 +107,7 @@ export default function markupGallery(data) {
 
     //лишає з дати тільки рік
     const realeaseData = el.release_date.slice(0, 4);
-    console.log(el.genre_ids);
+
     const movieEl = document.createElement('li');
     movieEl.classList.add('gallery_item');
     // якщо картинка відсутня, то міняє її на це забраження
@@ -136,8 +136,10 @@ const modal = document.querySelector('.backdrop');
 const modalBox = document.querySelector('.modal_box');
 
 async function openModal(id, poster) {
-  serviceApi.idNumber = 532639;
+  serviceApi.idNumber = id;
   const respData = await serviceApi.serviceIdMovie();
+  const respDataVideo = await serviceApi.serviceVideoApi();
+  console.log(respDataVideo.results);
 
   let ganres = respData.genres.map(el => el.name);
 
@@ -246,29 +248,3 @@ window.addEventListener('keydown', e => {
 });
 
 export { markupGallery, openModal };
-
-// const markup = data
-// .map(el => {
-//   console.log(el.poster_path);
-
-//   let name = el.original_title;
-//   if (el.poster_path === null) {
-//     return;
-//   }
-//   if (name === undefined) {
-//     name = el.original_name;
-//     return `<li class="gallery_item"><a href="" class="modal_click-open">
-//       <img class="gallery_img" src="https://image.tmdb.org/t/p/w500${el.poster_path}" alt="${name}"/></a>
-//         <div class="title_container"><h2 class="gallery_title">${name}<span>ganre</span></h2></div>
-//     </li>`;
-//   } else {
-//     return `<li class="gallery_item"><a href="" class="modal_click-open">
-//       <img class="gallery_img" src="https://image.tmdb.org/t/p/w500${el.poster_path}" alt="${name}"/></a>
-//         <div class="title_container"><h2 class="gallery_title">${name}<span>ganre</span></h2></div>
-//     </li>`;
-//   }
-// })
-// .join('');
-// gallery;
-// gallery.insertAdjacentHTML('afterbegin', markup);
-// }

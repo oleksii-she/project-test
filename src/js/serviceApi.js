@@ -49,6 +49,18 @@ export default class NewServiceApi {
       console.error(error.message);
     }
   }
+  async serviceVideoApi() {
+    try {
+      const resp = await fetch(
+        `https://api.themoviedb.org/3/movie/${this.id}/videos?api_key=bef2e1469ade062164db331fc6ab2f25`
+      );
+      const respData = await resp.json();
+
+      return respData;
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
 
   ressetPage() {
     this.page = 1;

@@ -109,6 +109,7 @@ export default function markupGallery(data) {
     const realeaseData = el.release_date.slice(0, 4);
 
     const movieEl = document.createElement('li');
+
     movieEl.classList.add('gallery_item');
     // якщо картинка відсутня, то міняє її на це забраження
     if (el.poster_path === null) {
@@ -136,11 +137,10 @@ const modal = document.querySelector('.backdrop');
 const modalBox = document.querySelector('.modal_box');
 
 async function openModal(id, poster) {
-  serviceApi.idNumber = id;
   console.log(id);
+  serviceApi.idNumber = id;
+
   const respData = await serviceApi.serviceIdMovie();
-  const respDataVideo = await serviceApi.serviceVideoApi();
-  console.log(respDataVideo.results);
 
   let ganres = respData.genres.map(el => el.name);
   // 616037 629176 507086 682507 539681 852448
@@ -218,6 +218,7 @@ async function openModal(id, poster) {
       </div>
     </div>
   `;
+    iFrameVideo(respData.original_title, respData.id);
   }
 
   document.querySelector(
@@ -232,6 +233,7 @@ async function openModal(id, poster) {
 }
 
 function closeModal() {
+  modalBox.innerHTML = '';
   modal.classList.add('is-hiden');
   document.body.classList.remove('scrollOFF');
 }
@@ -247,5 +249,22 @@ window.addEventListener('keydown', e => {
     closeModal();
   }
 });
+
+async function iFrameVideo(name, id) {
+  const da = document.querySelector('.img_box');
+
+  serviceApi.idVideo = id;
+  const videoresp = await serviceApi.serviceVideoApi();
+  if (videoresp.results[4].key) {
+    da.innerHTML = `<iframe
+    width="364"
+    height="437"
+    src="https://www.youtube.com/embed/${videoresp.results[0].key}"
+    frameborder="0"
+    allowfullscreen
+    >
+    </iframe>`;
+  }
+}
 
 export { markupGallery, openModal };

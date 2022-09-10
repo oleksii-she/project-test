@@ -6,6 +6,7 @@ export default class NewServiceApi {
     this.searchValue = '';
     this.page = 1;
     this.id = NaN;
+    this.videoId = NaN;
   }
 
   // сервіс  топ популярних фільмів за тиждень
@@ -49,25 +50,25 @@ export default class NewServiceApi {
       console.error(error.message);
     }
   }
-  // async serviceVideoApi() {
-  //   try {
-  //     const resp = await fetch(
-  //       `https://api.themoviedb.org/3/movie/${this.id}/videos?api_key=bef2e1469ade062164db331fc6ab2f25`
-  //     );
-  //     const respData = await resp.json();
+  async serviceVideoApi() {
+    try {
+      const resp = await fetch(
+        `https://api.themoviedb.org/3/movie/${this.videoId}/videos?api_key=bef2e1469ade062164db331fc6ab2f25`
+      );
+      const respData = await resp.json();
 
-  //     return respData;
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // }
+      return respData;
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
   async ganresApi() {
     try {
       const resp = await fetch(
         `https://api.themoviedb.org/3//genre/movie/list?api_key=bef2e1469ade062164db331fc6ab2f25`
       );
       const respGanre = await resp.json();
-      console.log(respGanre);
+
       return respGanre;
     } catch (error) {
       console.error(error.message);
@@ -98,6 +99,10 @@ export default class NewServiceApi {
 
   set idNumber(nuwId) {
     this.id = nuwId;
+  }
+
+  set idVideo(nuwVideoId) {
+    this.videoId = nuwVideoId;
   }
 
   insertGenresToMovieObj() {

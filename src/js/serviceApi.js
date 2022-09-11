@@ -50,10 +50,10 @@ export default class NewServiceApi {
       console.error(error.message);
     }
   }
-  async serviceVideoApi() {
+  async serviceTrailerMovie() {
     try {
       const resp = await fetch(
-        `https://api.themoviedb.org/3/movie/${this.videoId}/videos?api_key=bef2e1469ade062164db331fc6ab2f25`
+        `${url}/movie/${this.videoId}/videos?api_key=bef2e1469ade062164db331fc6ab2f25`
       );
       const respData = await resp.json();
 
@@ -62,6 +62,7 @@ export default class NewServiceApi {
       console.error(error.message);
     }
   }
+
   async ganresApi() {
     try {
       const resp = await fetch(

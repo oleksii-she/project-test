@@ -140,7 +140,7 @@ async function openModal(id, poster) {
   console.log(id);
   serviceApi.idNumber = id;
   serviceApi.idVideo = id;
-  const videoresp = await serviceApi.serviceVideoApi();
+  const videoresp = await serviceApi.serviceTrailerMovie();
   const respData = await serviceApi.serviceIdMovie();
 
   let ganres = respData.genres.map(el => el.name);
@@ -357,7 +357,7 @@ window.addEventListener('keydown', e => {
 //   const da = document.querySelector('.img_box');
 
 //   serviceApi.idVideo = id;
-//   const videoresp = await serviceApi.serviceVideoApi();
+//   const videoresp = await serviceApi.serviceTrailerMovie();
 //   if (videoresp.results[4].key) {
 //     da.innerHTML = `<iframe
 //     width="364"

@@ -139,7 +139,8 @@ const modalBox = document.querySelector('.modal_box');
 async function openModal(id, poster) {
   console.log(id);
   serviceApi.idNumber = id;
-
+  serviceApi.idVideo = id;
+  const videoresp = await serviceApi.serviceVideoApi();
   const respData = await serviceApi.serviceIdMovie();
 
   let ganres = respData.genres.map(el => el.name);
@@ -147,7 +148,7 @@ async function openModal(id, poster) {
   if (poster === null) {
     modalBox.innerHTML = `
     <div class="img_box">
-    <img src="https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=996&t=st=1662636904~exp=1662637504~hmac=6929048a20459487fdcf38b8077d000703b9a860b7d7ee1bb32f889a47b1edd8" alt="" class="modal_img" />
+    <img class="click-card-js modal_img" src="https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=996&t=st=1662636904~exp=1662637504~hmac=6929048a20459487fdcf38b8077d000703b9a860b7d7ee1bb32f889a47b1edd8" alt="" class="modal_img" />
     </div>
     <div class="text-content_box">
       <h2 class="modal_title">${respData.original_title}</h2>
@@ -184,7 +185,7 @@ async function openModal(id, poster) {
   } else {
     modalBox.innerHTML = `
     <div class="img_box">
-    <img src="https://image.tmdb.org/t/p/w500${poster}" alt="" class="modal_img" />
+    <img class="click-card-js modal_img"    src="https://image.tmdb.org/t/p/w500${poster}" alt="" class="modal_img" />
     </div>
     <div class="text-content_box">
       <h2 class="modal_title">${respData.original_title}</h2>
@@ -218,7 +219,67 @@ async function openModal(id, poster) {
       </div>
     </div>
   `;
-    iFrameVideo(respData.original_title, respData.id);
+
+    if (videoresp.results[1]) {
+      modalBox.innerHTML = `
+      <div class="img_box">
+  
+      <img class="click-card-js modal_img"    src="https://image.tmdb.org/t/p/w500${poster}" alt="" class="modal_img" />
+      <button class="play_video">
+      <svg class="icon_play" width="24" height="24">
+        <use href="/src/images/symbol-defs.svg#icon-play"></use>
+      </svg>
+    </button>
+      </div>
+      <div class="text-content_box">
+        <h2 class="modal_title">${respData.original_title}</h2>
+        <div class="category_box">
+          <ul class="category_list">
+            <li class="category_item">Vote / Votes <p> <span class="vote">${
+              respData.vote_average
+            }</span><span class="slash">/</span>${respData.vote_count}</p></li>
+            <li class="category_item">Popularity <p>${
+              respData.popularity
+            }<p></li>
+            <li class="category_item">Original Title</li>
+            <li class="category_item">Genre</li>
+          </ul>
+          <ul class="categiryApi_list">
+  
+            <li class="categiryApi_item"></li>
+            <li class="categiryApi_item categiryApi_style--upercase">${
+              respData.original_title
+            }</li>
+            <li class="categiryApi_item categiryApi_style ganre">${String(
+              ganres
+            ).replaceAll(',', ' / ')} </li>
+          </ul>
+        </div>
+        <h2 class="about_title">About</h2>
+        <p class="about_text">
+       ${respData.overview}
+        </p>
+        <div class="modal-box_btn">
+          <button class="watched_btn">add to Watched</button>
+          <button class="queue_btn">add to queue</button>
+        </div>
+      </div>
+    `;
+      const cl = document
+        .querySelector('.play_video')
+        .addEventListener('click', e => {
+          const replacement = document.querySelector('.img_box');
+          replacement.innerHTML = `<iframe
+          class="treiler_iframe"
+              width="364"
+              height="437"
+              src="https://www.youtube.com/embed/${videoresp.results[0].key}"
+              frameborder="0"
+              allowfullscreen
+               >
+               </iframe>`;
+        });
+    }
   }
 
   document.querySelector(
@@ -230,6 +291,8 @@ async function openModal(id, poster) {
   const ganre = document.querySelector('.ganre');
   const btnModalClose = document.querySelector('.btn_close');
   btnModalClose.addEventListener('click', closeModal);
+
+  // iFrameVideo(respData.original_title, respData.id);
 }
 
 function closeModal() {
@@ -250,21 +313,21 @@ window.addEventListener('keydown', e => {
   }
 });
 
-async function iFrameVideo(name, id) {
-  const da = document.querySelector('.img_box');
+// async function iFrameVideo(name, id) {
+//   const da = document.querySelector('.img_box');
 
-  serviceApi.idVideo = id;
-  const videoresp = await serviceApi.serviceVideoApi();
-  if (videoresp.results[4].key) {
-    da.innerHTML = `<iframe
-    width="364"
-    height="437"
-    src="https://www.youtube.com/embed/${videoresp.results[0].key}"
-    frameborder="0"
-    allowfullscreen
-    >
-    </iframe>`;
-  }
-}
+//   serviceApi.idVideo = id;
+//   const videoresp = await serviceApi.serviceVideoApi();
+//   if (videoresp.results[4].key) {
+//     da.innerHTML = `<iframe
+//     width="364"
+//     height="437"
+//     src="https://www.youtube.com/embed/${videoresp.results[0].key}"
+//     frameborder="0"
+//     allowfullscreen
+//     >
+//     </iframe>`;
+//   }
+// }
 
 export { markupGallery, openModal };

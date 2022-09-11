@@ -220,15 +220,54 @@ async function openModal(id, poster) {
     </div>
   `;
 
-    if (videoresp.results[1]) {
+    if (videoresp.results[0]) {
       modalBox.innerHTML = `
       <div class="img_box">
   
-      <img class="click-card-js modal_img"    src="https://image.tmdb.org/t/p/w500${poster}" alt="" class="modal_img" />
+      <img class="click-card-js modal_img" src="https://image.tmdb.org/t/p/w500${poster}" alt="" class="modal_img" />
       <button class="play_video">
-      <svg class="icon_play" width="24" height="24">
-        <use href="/src/images/symbol-defs.svg#icon-play"></use>
+      <a href="#" class="playBut">
+    
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+        x="0px"
+        y="0px"
+        width="64px"
+        height="64px"
+        viewBox="0 0 213.7 213.7"
+        enable-background="new 0 0 213.7 213.7"
+        xml:space="preserve"
+      >
+        <polygon
+          class="triangle"
+          id="XMLID_18_"
+          fill="none"
+          stroke-width="7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          points="
+    73.5,62.5 148.5,105.8 73.5,149.1 "
+        />
+
+        <circle
+          class="circle"
+          id="XMLID_17_"
+          fill="none"
+          stroke-width="7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          cx="106.8"
+          cy="106.8"
+          r="103.3"
+        />
       </svg>
+    </a>
+  </div>
     </button>
       </div>
       <div class="text-content_box">
@@ -331,3 +370,14 @@ window.addEventListener('keydown', e => {
 // }
 
 export { markupGallery, openModal };
+{
+  /* <svg
+xmlns="http://www.w3.org/2000/svg"
+width="64"
+height="64"
+class="icon_play"
+viewBox="0 0 32 32"
+>
+<path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>
+</svg> */
+}

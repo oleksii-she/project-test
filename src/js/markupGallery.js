@@ -240,12 +240,13 @@ async function openModal(id, poster) {
         viewBox="0 0 213.7 213.7"
         enable-background="new 0 0 213.7 213.7"
         xml:space="preserve"
+        stroke-width="15"
       >
         <polygon
           class="triangle"
           id="XMLID_18_"
           fill="none"
-          stroke-width="7"
+          stroke-width="15"
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-miterlimit="10"

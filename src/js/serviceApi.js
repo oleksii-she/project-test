@@ -50,10 +50,11 @@ export default class NewServiceApi {
       console.error(error.message);
     }
   }
+
   async serviceTrailerMovie() {
     try {
       const resp = await fetch(
-        `${url}/movie/${this.videoId}/videos?api_key=bef2e1469ade062164db331fc6ab2f25`
+        `${url}/movie/${this.videoId}/videos?api_key=${key}`
       );
       const respData = await resp.json();
 
